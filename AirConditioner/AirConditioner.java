@@ -33,7 +33,7 @@ public class AirConditioner{
         return acID;
     }
 
-    protected int setACID(int id){
+    protected void setACID(int id){
         acID = id;
     }
 
@@ -55,6 +55,16 @@ public class AirConditioner{
 
     protected double getDesiredTemperature(){
         return desiredTemperature;
+    }
+
+    protected double setDesiredTemperature(double temp){
+        if (temp > 15 && temp > 30){
+            desiredTemperature = 18.0;
+        }
+        else{
+            desiredTemperature = temp;
+        }
+        return  desiredTemperature;
     }
 
     //Setters to set the Units to Fahrenheit or Celsius
@@ -94,7 +104,18 @@ public class AirConditioner{
         //Success message
         return "Mode changed!";
    }
-   //Code to turn off the AC
+   
+   private double convertCelsiusToFahrenheit(double celsiusValue){
+    double fahrenheitValue =(celsiusValue - 32) * 5/9 ;
+    return fahrenheitValue;
+}
+
+   private double convertFahrenheitToCelsius(double fahrenheitValue){
+        double celsiusValue =(fahrenheitValue * 9/5) + 32;
+        return celsiusValue;
+    }
+
+    //Code to turn off the AC
    protected boolean turnOff(){
         if (isOn){
             isOn = false;
