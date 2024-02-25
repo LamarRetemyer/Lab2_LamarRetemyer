@@ -138,10 +138,13 @@ public class AirConditioner{
         switch (num){
             case 1:
                 mode = "Fan";
+                break;
             case 2:
                 mode = "Dry";
+                break;
             case 3:
                 mode = "Cool";
+                break;
         }
         //Success message
         return "Mode changed!";
@@ -150,7 +153,7 @@ public class AirConditioner{
    private double convertCelsiusToFahrenheit(double celsiusValue){
     double fahrenheitValue =(celsiusValue - 32) * 5/9 ;
     return fahrenheitValue;
-}
+    }
 
    private double convertFahrenheitToCelsius(double fahrenheitValue){
         double celsiusValue =(fahrenheitValue * 9/5) + 32;

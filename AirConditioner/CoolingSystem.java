@@ -2,7 +2,7 @@ package AirConditioner;
 
 
 public class CoolingSystem {
-
+    
     public static void main(String[] args) {
         AirConditioner[] array1 = new AirConditioner[3]; 
         //create the objects
