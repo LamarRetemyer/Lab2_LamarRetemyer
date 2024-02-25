@@ -57,14 +57,56 @@ public class AirConditioner{
         return desiredTemperature;
     }
 
-    protected double setDesiredTemperature(double temp){
-        if (temp > 15 && temp > 30){
-            desiredTemperature = 18.0;
+    protected void setDesiredTemperature(double temp){ //Method to setDesired Temperature 
+        if(units.equals("Celsius")){
+            if (temp < 15 && temp > 30){
+                desiredTemperature = 18.0;//set to default
+                setUnits("Celsius"); //set to default
+            }
+            else{
+                desiredTemperature = temp;//change temperature
+            }
+        
+        }else{
+            if (temp < convertCelsiusToFahrenheit(15) && temp > convertCelsiusToFahrenheit(30)){
+                desiredTemperature = 18.0;//set to default
+                setUnits("Celsius"); //set to default
+            }
+            else{
+                desiredTemperature = temp;//change temperature
+            }
+        }        
+    }
+
+    protected double setDesiredTemperature(double temp, String unit){ //Overloaded method
+        //Determine if input unit is equal to the AC unit
+        if (!unit.equals(unit)){ //If unit entered and current system set unit dont match
+            if (units.equals("Celsius")){ //If they dont match and system is in Celsius
+                convertFahrenheitToCelsius(temp); //Convert Fahrenheit to Celsius
+                if (temp < 15 && temp > 30){
+                    desiredTemperature = 18.0;//set to default
+                    setUnits("Celsius"); //set to default
+                }
+                else{
+                    desiredTemperature = temp;//change temperature
+                }
+            }
+            else{
+                convertCelsiusToFahrenheit(temp);
+                if (temp < convertCelsiusToFahrenheit(15) && temp > convertCelsiusToFahrenheit(30)){
+                    desiredTemperature = 18.0;//set to default
+                    setUnits("Celsius"); //set to default
+                }
+                else{
+                    desiredTemperature = temp;//change temperature
+                }
+            }
+    
         }
         else{
-            desiredTemperature = temp;
+            desiredTemperature = temp;            
         }
-        return  desiredTemperature;
+        return desiredTemperature;
     }
 
     //Setters to set the Units to Fahrenheit or Celsius
